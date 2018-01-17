@@ -15,10 +15,21 @@ class UserGroupRepository extends \Doctrine\ORM\EntityRepository
      */
     public function findAll()
     {
-        return $this->createQueryBuilder('u')
-            ->select('u')
-            ->orderBy('u.name', 'ASC')
+        return $this->createQueryBuilder('g')
+            ->select('g')
+            ->orderBy('g.name', 'ASC')
             ->getQuery()
             ->getResult();
     }
+
+    public function findbyName($research){
+        return $this->createQueryBuilder('g')
+            ->select('g')
+            ->where('g.name = :research')
+            ->setParameter('research', $research)
+            ->getQuery()
+            ->getResult();
+
+    }
+
 }

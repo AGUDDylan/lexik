@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Utilisateurs de Lexik
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h2>Liste des utilisateurs</h2>
+
+        <form method="get" action="{{ path('research') }}">
+            <div class="form-group">
+                <label>Recherche :</label>
+                <input  type="text" name="research" class="form-control" />
+                <button type="submit" class="btn btn-default">Rechercher</button>
+            </div>
+        </form>
+
+        <a href ="{{ path('userlist') }}" class="btn btn-default"> Annuler la recherche </a>
+
+
+        <table class="table table-hover table-bordered">
+            <thead class="thead-light">
+            <tr>
+
+                <th scope="col">Groupe</th>
+                <th scope="col">Nom et Prénom</th>
+                <th scope="col">Email</th>
+                <th scope ="col">Détails</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                {% if users is not null  %}
+                    {% for user in users %}
+                        <tr>
+
+                            <td>{{ user.getGroup.getName }}</td>
+                            <td>{{ user.getLastName | upper }} {{ user.getFirstName }}</td>
+                            <td>{{ user.getEmail }}</td>
+                            <td>
+                                <a href="#" onclick="window.open('{{ path('userdetail',{'id':user.getId }) }}','Detail de l\'utilisateur','menubar=no, scrollbars=no, top=150, left=100, width=250, height=250');">
+                                    Voir plus
+                                </a>
+                                <br />
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+
+                {% if groups is not null %}
+                    {% for group in groups %}
+                        {% for user in group.users %}
+                        <tr>
+
+                            <td>{{ user.getGroup.getName }}</td>
+                            <td>{{ user.getLastName | upper }} {{ user.getFirstName }}</td>
+                            <td>{{ user.getEmail }}</td>
+                            <td>
+                                <a href="#" onclick="window.open('{{ path('userdetail',{'id':user.getId }) }}','Detail de l\'utilisateur','menubar=no, scrollbars=no, top=150, left=100, width=250, height=250');">
+                                    Voir plus
+                                </a>
+                                <br />
+                            </td>
+
+                        </tr>
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

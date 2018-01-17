@@ -10,4 +10,19 @@ namespace AppBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    /**
+     * @return array
+     */
+
+
+    public function findbyName($research){
+        return $this->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.firstName = :research or u.lastName = :research')
+            ->setParameter('research', $research)
+            ->getQuery()
+            ->getResult();
+
+    }
 }

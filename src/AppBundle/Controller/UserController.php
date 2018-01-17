@@ -37,6 +37,25 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/research", name="research")
+     */
+    public function searchAction(Request $request)
+    {
+
+        $userManager = $this->get('app.user.manager');
+        $users = $userManager->find($request->query->get('research'));
+
+        $usergroupManager = $this->get('app.usergroup.manager');
+        $groupes = $usergroupManager->find($request->query->get('research'));
+        return $this->render(':user:research.html.twig',[
+            'users' => $users,
+            'groups' =>$groupes,
+        ]);
+    }
+
 
 
 }

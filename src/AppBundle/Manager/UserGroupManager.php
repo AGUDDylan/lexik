@@ -28,5 +28,10 @@ class UserGroupManager
         return $this->manager->getRepository(UserGroup::class)->findAll();
     }
 
+    public function find($research)
+    {
+        return $this->manager->getRepository(UserGroup::class)->findbyName($research);
+    }
+
 
 }
