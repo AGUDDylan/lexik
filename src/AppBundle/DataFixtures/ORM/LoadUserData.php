@@ -13,10 +13,10 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 
 
 use AppBundle\Entity\User;
-use Doctrine\DBAL\Types\DateType;
 
 
-class LoadUser extends AbstractFixture implements OrderedFixtureInterface
+
+class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 
 {
 
@@ -75,7 +75,7 @@ class LoadUser extends AbstractFixture implements OrderedFixtureInterface
             $user->setFirstName($data['firstName']);
             $user->setLastName($data['lastName']);
             $user->setEmail($data['email']);
-            $user->setBirthday($data['birthday']);
+            $user->setBirthdayDate($data['birthdayDate']);
             $user->setGroup($data['group']);
             $manager->persist($user);
         }

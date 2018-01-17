@@ -12,7 +12,7 @@ services:
         autoconfigure: true
         # this means you cannot fetch services directly from the container via $container->get()
         # if you need to do this, you can override this setting on individual services
-        public: false
+        public: true
 
     # makes classes in src/AppBundle available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -29,7 +29,13 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
-    # add more services, or override services that need manual wiring
-    # AppBundle\Service\ExampleService:
-    #     arguments:
-    #         $someArgument: 'some_value'
+    # makes classes in src/AppBundle/DataFixtures available to be used as services
+        # and have a tag that allows actions to type-hint services
+    AppBundle\DataFixtures\ORM\:
+        resource: '../../src/AppBundle/DataFixtures/ORM'
+        tags: ['doctrine.fixture.orm']
+
+    app.usergroup.manager:
+        class: AppBundle\Manager\UserGroupManager
+        arguments:
+            - "@=service('doctrine').getManager()"

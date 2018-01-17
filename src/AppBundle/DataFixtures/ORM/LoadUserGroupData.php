@@ -16,7 +16,7 @@ use AppBundle\Entity\UserGroup;
 
 
 
-class LoadUserGroup extends AbstractFixture implements OrderedFixtureInterface
+class LoadUserGroupData extends AbstractFixture implements OrderedFixtureInterface
 
 {
 

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Utilisateurs de Lexik
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h2>Liste des utilisateurs</h2>
+
+            <table class="table table-hover table-bordered">
+                <thead class="thead-light">
+                <tr>
+
+                    <th scope="col">Groupe</th>
+                    <th scope="col">Nom et Prénom</th>
+                    <th scope="col">Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for group in groups %}
+                    {% for user in group.users %}
+                        <tr>
+
+                            <td>{{ user.getGroup.getName }}</td>
+                            <td>{{ user.getLastName | upper }} {{ user.getFirstName }}</td>
+                            <td>{{ user.getEmail }}</td>
+
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    Aucun utilisateur crée sur ce site.
+                {% endfor %}
+                </tbody>
+            </table>
+    </div>
+{% endblock %}
