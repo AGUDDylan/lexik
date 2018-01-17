@@ -180,5 +180,14 @@ class User
     }
 
 
+    /**
+     * Retourne l'age de l'user
+     */
+    public function getAge(){
+        $timenow = new\DateTime();
+        return $timenow->diff($this->birthdayDate,true)->y;
+    }
+
+
 }
 

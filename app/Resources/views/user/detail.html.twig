@@ -1,0 +1,9 @@
+<div>
+    {% if user %}
+        <p> Nom : {{ user.getLastName | upper }} </p>
+        <p>Prénom : {{ user.getFirstName }} </p>
+        <p>Age : {{ user.getAge }} ans </p>
+    {% else %}
+        Error
+    {% endif %}
+</div>
