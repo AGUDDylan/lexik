@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,6 +12,14 @@ use AppBundle\Entity\User;
 
 class UserController extends Controller
 {
+
+    /**
+     * @return \AppBundle\Manager\UserManager|object
+     */
+    private function getUserManager()
+    {
+        return $this->get('app.user.manager');
+    }
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -39,13 +48,38 @@ class UserController extends Controller
 
     /**
      * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Route("/adduser", name="adduser")
+     */
+    public function newAction(Request $request)
+    {
+
+        $userManager = $this->getUserManager();
+
+        $user = $userManager->create();
+
+        $form = $this->createForm(UserType::class,$user);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $userManager->save($user);
+            return $this->redirectToRoute('userlist');
+        }
+        return $this->render(':user:new.html.twig',[
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/research", name="research")
      */
     public function searchAction(Request $request)
     {
 
-        $userManager = $this->get('app.user.manager');
+        $userManager = $this->getUserManager();
         $users = $userManager->find($request->query->get('research'));
 
         $usergroupManager = $this->get('app.usergroup.manager');

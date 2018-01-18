@@ -22,4 +22,23 @@ class UserManager
     {
         return $this->manager->getRepository(User::class)->findByName($research);
     }
+
+    /**
+     * @return User
+     */
+    public function create()
+    {
+        return new User();
+    }
+
+    /**
+     * @param User $user
+     */
+    public function save(User $user)
+    {
+        if($user->getId() === null){
+            $this->manager->persist($user);
+        }
+        $this->manager->flush();
+    }
 }

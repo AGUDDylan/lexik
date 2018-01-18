@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Ajouter utilisateur
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Ajouter un utilisateur</h1>
+        {{ form_start(form) }}
+
+        {{ form_errors(form) }}
+
+        <div class="form-group">
+            {{ form_label(form.firstName,"Prénom") }}
+            {% if form_errors(form.firstName) %}
+                <div class="alert alert-danger">
+                    {{ form_errors(form.firstName) }}
+                </div>
+            {% endif %}
+            {{ form_widget(form.firstName, {'attr': {'class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.lastName,"Nom de famille") }}
+            {% if form_errors(form.lastName) %}
+                <div class="alert alert-danger">
+                    {{ form_errors(form.lastName) }}
+                </div>
+            {% endif %}
+            {{ form_widget(form.lastName, {'attr': {'class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.email,"Email") }}
+            {% if form_errors(form.email) %}
+                <div class="alert alert-danger">
+                    {{ form_errors(form.email) }}
+                </div>
+            {% endif %}
+            {{ form_widget(form.email, {'attr': {'class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.birthdayDate,"Date de naissance") }}
+            {% if form_errors(form.birthdayDate) %}
+                <div class="alert alert-danger">
+                    {{ form_errors(form.birthdayDate) }}
+                </div>
+            {% endif %}
+            {{ form_widget(form.birthdayDate, {'attr': {'class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.group,"Groupe : ") }}
+            {% if form_errors(form.group) %}
+                <div class="alert alert-danger">
+                    {{ form_errors(form.group) }}
+                </div>
+            {% endif %}
+            {{ form_widget(form.group, {'attr': {'class':'form-control'}}) }}
+        </div>
+
+        {{ form_rest(form) }}
+
+        <button type="submit" class="btn btn-default">Ajouter</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
