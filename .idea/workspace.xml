@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24dd39bc-8198-4729-99d3-bed61c8a5a2d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/user/list.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/user/list.html.twig" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/user/research.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/user/research.html.twig" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Manager/UserManager.php" afterPath="$PROJECT_DIR$/src/AppBundle/Manager/UserManager.php" />
-    </list>
+    <list default="true" id="24dd39bc-8198-4729-99d3-bed61c8a5a2d" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,8 +73,8 @@
       <file leaf-file-name="research.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/user/research.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1598">
-              <caret line="94" column="39" lean-forward="true" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
+            <state relative-caret-position="561">
+              <caret line="33" column="19" lean-forward="true" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -204,7 +199,7 @@
       <path value="$PROJECT_DIR$/vendor/zendframework/zend-eventmanager" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="-7" />
     <option name="width" value="1146" />
     <option name="height" value="1047" />
@@ -376,15 +371,15 @@
       <updated>1516124443587</updated>
       <workItem from="1516124445842" duration="5722000" />
       <workItem from="1516205494090" duration="20013000" />
-      <workItem from="1516264471537" duration="8061000" />
+      <workItem from="1516264471537" duration="8091000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33796000" />
+    <option name="totallyTimeSpent" value="33826000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1146" height="1047" extended-state="0" />
+    <frame x="-7" y="0" width="1146" height="1047" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26371682" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -825,8 +820,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/user/research.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1598">
-          <caret line="94" column="39" lean-forward="true" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
+        <state relative-caret-position="561">
+          <caret line="33" column="19" lean-forward="true" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
           <folding />
         </state>
       </provider>
