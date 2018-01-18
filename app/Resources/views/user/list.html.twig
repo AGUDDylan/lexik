@@ -25,7 +25,7 @@
                     <th scope="col">Nom et Prénom</th>
                     <th scope="col">Email</th>
                     <th scope ="col">Détails</th>
-
+                    <th scope ="col">Supprimer</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -41,6 +41,11 @@
                                     Voir plus
                                 </a>
                                 <br />
+
+                            </td>
+
+                            <td>
+                                <a href="{{ path('deluser',{'id':user.getId}) }}">Supprimer cet utilisateur</a>
                             </td>
 
                         </tr>

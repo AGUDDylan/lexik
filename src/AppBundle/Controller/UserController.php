@@ -90,6 +90,23 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * @param User $user
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("/deluser/{id}", name="deluser")
+     */
+    public function deleteAction(User $user, Request $request)
+    {
+
+        $userManager = $this->getUserManager();
+
+        $userManager->delete($user);
+        return $this->redirectToRoute('userlist');
+    }
+
+
+
 
 
 }
