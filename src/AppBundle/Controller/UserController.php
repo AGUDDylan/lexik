@@ -20,6 +20,7 @@ class UserController extends Controller
     {
         return $this->get('app.user.manager');
     }
+
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -27,10 +28,10 @@ class UserController extends Controller
      */
     public function listAction(Request $request)
     {
-    $groups = $this->get('app.usergroup.manager')->getAllGroups();
-    return $this->render(':user:list.html.twig',[
-        'groups' => $groups,
-    ]);
+        $groups = $this->get('app.usergroup.manager')->getAllGroups();
+        return $this->render(':user:list.html.twig', [
+            'groups' => $groups,
+        ]);
     }
 
     /**
@@ -39,9 +40,9 @@ class UserController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/detail/{id}",name="userdetail")
      */
-    public function detailAction(User $user,Request $request)
+    public function detailAction(User $user, Request $request)
     {
-        return $this->render(':user:detail.html.twig',[
+        return $this->render(':user:detail.html.twig', [
             'user' => $user,
         ]);
     }
@@ -58,15 +59,14 @@ class UserController extends Controller
 
         $user = $userManager->create();
 
-        $form = $this->createForm(UserType::class,$user);
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $userManager->save($user);
             return $this->redirectToRoute('userlist');
         }
-        return $this->render(':user:new.html.twig',[
+        return $this->render(':user:new.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -84,9 +84,9 @@ class UserController extends Controller
 
         $usergroupManager = $this->get('app.usergroup.manager');
         $groupes = $usergroupManager->find($request->query->get('research'));
-        return $this->render(':user:research.html.twig',[
+        return $this->render(':user:research.html.twig', [
             'users' => $users,
-            'groups' =>$groupes,
+            'groups' => $groupes,
         ]);
     }
 
@@ -105,8 +105,29 @@ class UserController extends Controller
         return $this->redirectToRoute('userlist');
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("/delmanyuser", name="delmanyuser")
+     * */
+    public function deletemanyAction(Request $request)
+    {
+        $userManager = $this->getUserManager();
+
+        $userIds = $request->get('id');
 
 
-
-
+        foreach ($userIds as $userId) {
+            if ($user = $userManager->findById($userId)) {
+                $userManager->delete($user);
+            }
+        }
+        return $this->redirectToRoute('userlist');
+    }
 }
+
+
+
+
+
+

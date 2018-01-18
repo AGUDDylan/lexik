@@ -24,6 +24,18 @@ class UserManager
     }
 
     /**
+     * @param $id
+     * @return User|null|object
+     */
+    public function findById($id)
+    {
+        return $this->manager->getRepository(User::class)->find($id);
+    }
+    /**
+     * @return User[]|array
+     */
+
+    /**
      * @return User
      */
     public function create()

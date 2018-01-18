@@ -19,7 +19,7 @@
 
         <a href ="{{ path('userlist') }}" class="btn btn-default"> Annuler la recherche </a>
 
-
+        <form action ="{{ path('delmanyuser')}}">
         <table class="table table-hover table-bordered">
             <thead class="thead-light">
             <tr>
@@ -50,8 +50,17 @@
                             <td>
                                 <a href="{{ path('deluser',{'id':user.getId}) }}">Supprimer cet utilisateur</a>
                             </td>
+                            <td>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" name="id[]" value="{{ user.getId }}" class="form-check-input">
+                                    </label>
+                                </div>
+                            </td>
 
                         </tr>
+                    {% else %}
+                        Aucun utilisateur trouvé.
                     {% endfor %}
                 {% endif %}
 
@@ -73,12 +82,23 @@
                                 <a href="{{ path('deluser',{'id':user.getId}) }}">Supprimer cet utilisateur</a>
                             </td>
 
+                            <td>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" name="id[]" value="{{ user.getId }}" class="form-check-input">
+                                    </label>
+                                </div>
+                            </td>
+
                         </tr>
+                        {% else %}
+                            Aucun groupe trouvé.
                         {% endfor %}
                     {% endfor %}
                 {% endif %}
 
             </tbody>
+            <button type="submit" class="btn btn-default">Supprimer les utilisateurs sélectionnés</button>
         </table>
     </div>
 {% endblock %}
