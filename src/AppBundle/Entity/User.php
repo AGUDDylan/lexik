@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use	Symfony\Component\Validator\Constraints	as	Assert;
+
 
 /**
  * User
@@ -14,7 +16,6 @@ class User
 {
     /**
      * @var int
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -23,14 +24,14 @@ class User
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="firstName", type="string", length=255)
      */
     private $firstName;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="lastName", type="string", length=255)
      */
     private $lastName;
@@ -44,7 +45,8 @@ class User
 
     /**
      * @var \DateTime
-     *
+     *@Assert\NotBlank()
+     *@Assert\DateTime()
      * @ORM\Column(name="birthdayDate", type="date")
      */
     private $birthdayDate;
